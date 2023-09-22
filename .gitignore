@@ -10,6 +10,7 @@
 /node_modules
 npm-debug.log
 yarn-error.log
+node_modules
 
 # IDEs and editors
 .idea/
@@ -30,6 +31,9 @@ yarn-error.log
 
 # Miscellaneous
 /.angular/cache
+.angular
+/.angular
+.angular/cache
 .sass-cache/
 /connect.lock
 /coverage
