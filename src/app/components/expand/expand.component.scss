@@ -1,0 +1,40 @@
+/* :host {
+  display: block;
+} */
+
+// aui-expand {
+//   display: flex;
+//   flex-direction: column;
+//   .aui-expand-label {
+//     &-wrapper {
+//       display: inline-flex;
+//       align-items: center;
+//       cursor: pointer;
+//       color: acolors.$burgundy;
+//       &:hover {
+//         color: acolors.$yellow;
+//       }
+//     }
+//     span {
+//       padding-right: .25em;
+//       font-weight: 500;
+//       font-size: 1.125em;
+//     }
+//     aui-svg-sprite {
+//       display: inline-flex;
+//       width: 1.125em;
+//       height: 1.125em;
+//     }
+//   }
+//   .expand {
+//     &-down {
+//       order: -1;
+//     }
+//     &.padding-top {
+//       padding-top: .5em;
+//     }
+//     &.padding-bottom {
+//       padding-bottom: .5em;
+//     }
+//   }
+// }

@@ -1,0 +1,57 @@
+<div *ngIf="label" class="slider-label" [class.padding-bottom]="showTooltip">
+  <span>{{ label }}</span>
+</div>
+<div id="container" #container class="slider-container" [class.disabled]="isDisabled" (click)="isDisabled ? $event.preventDefault() : clickedOnContainer($event)">
+
+  <div id="bar" #bar class="slider-bar slider-bar-class" [class.disabled]="isDisabled" (click)="isDisabled ? $event.preventDefault() : clickedOnBar($event)">
+
+    <span *ngIf="range && toolTip && showTooltip && rangeSlider" class="slider-tooltip"
+      [style.top.px]="toolTipTop" [style.left.px]="minSliderLeft - 8">{{ range[0] }}</span>
+    <span *ngIf="range && toolTip && showTooltip" [style.top.px]="toolTipTop" class="slider-tooltip"
+      [style.left.px]="maxSliderLeft - 8">{{ range[1] }}</span>
+    <span *ngIf="range && combineToolTip && rangeSlider && showTooltip" class="slider-tooltip"
+      [style.top.px]="toolTipTop" [style.left.px]="combineToolTipLeft - 8">{{ range[0] }}-{{range[1] }}</span>
+
+    <div class="slider-zipper-container">
+
+      <div *ngIf="rangeSlider" #minSlider class="slider-zipper slider-zipper-min slider-zipper-class"
+        [class.disabled]="isDisabled" (mousedown)="minMouseDown($event)" (touchstart)="minTouched($event)" [style.left.px]="minSliderLeft"
+        (mouseup)="mouseUp($event)" (click)="$event.preventDefault()">
+
+        <!-- <aui-svg-sprite class="slider-zipper-chevron-left" src="chevron-thin-left" lib="/assets/svg/sprite-alior.svg">
+        </aui-svg-sprite> -->
+        <!-- <aui-svg-sprite class="slider-zipper-chevron-right" src="chevron-thin-right" lib="/assets/svg/sprite-alior.svg">
+        </aui-svg-sprite> -->
+      </div>
+
+      <div #maxSlider class="slider-zipper slider-zipper-max slider-zipper-class" [class.transitioned]="!maxSelected && !rangeSlider"
+        [class.disabled]="isDisabled" (mousedown)="maxMouseDown($event)" (touchstart)="maxTouched($event)" [style.left.px]="maxSliderLeft"
+        (mouseup)="mouseUp($event)">
+
+        <!-- <aui-svg-sprite class="slider-zipper-chevron-left" src="chevron-thin-left" lib="/assets/svg/sprite-alior.svg">
+        </aui-svg-sprite>
+        <aui-svg-sprite class="slider-zipper-chevron-right" src="chevron-thin-right" lib="/assets/svg/sprite-alior.svg">
+        </aui-svg-sprite> -->
+      </div>
+    </div>
+
+    <div #sliderHighlight class="slider-highlight slider-highlight-class" [class.transitioned]="!maxSelected && !rangeSlider"
+      [class.disabled]="isDisabled" [style.left.px]="highlightLeft" [style.width.px]="highlightWidth"
+      [class.border-radius]="!minLimit" (click)="isDisabled ? $event.preventDefault() : clickedOnHighLight($event)">
+    </div>
+
+    <div *ngIf="minLimit" class="slider-limit slider-limit-min" [style.width.px]="minLimitWidth"></div>
+    <div *ngIf="maxLimit" class="slider-limit slider-limit-max" [style.width.px]="maxLimitWidth"></div>
+
+  </div>
+</div>
+
+<div *ngIf="showMinMaxLabels" class="slider-info">
+  <div>{{ min }}</div>
+  <div>{{ max }}</div>
+</div>
+
+<div *ngIf="showMinMaxTemplates" class="slider-info">
+  <div><ng-content select="aui-slider-min-label"></ng-content></div>
+  <div><ng-content select="aui-slider-max-label"></ng-content></div>
+</div>

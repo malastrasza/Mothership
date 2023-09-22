@@ -1,0 +1,45 @@
+<div>LOGIN PAGE</div>
+<div>
+  <form #form="ngForm" (ngSubmit)="submit(form, $event)">
+    <div>
+      <input
+        type="text"
+        name="username"
+        [(ngModel)]="data.username"
+        #username="ngModel"
+        required
+        minlength="4"
+        capitalLetter
+        maxlength="20"
+        placeholder="Choose a name"
+      />
+      <p style="color: red" *ngIf="username.errors?.required">This field is required!</p>
+      <ng-container *ngIf="username.errors | priorityError:['minlength', 'capitalLetter'] as err">
+        <p style="color: red" *ngIf="err?.minlength">
+          Minimum length is {{ err?.minlength.requiredLength }}, whilst you
+          typed only {{ err?.minlength.actualLength }}!
+        </p>
+        <p style="color: red" *ngIf="err?.capitalLetter">Capital letter required</p>
+        <p>
+          {{ err | json }}
+        </p>
+      </ng-container>
+    </div>
+    <div>
+      <input
+        type="text"
+        type="password"
+        name="password"
+        ngModel
+        #password="ngModel"
+        placeholder="Type a password"
+        required
+      />
+      <p style="color: red" *ngIf="password.errors?.required">
+        This field is required!
+      </p>
+    </div>
+
+    <button type="submit" [disabled]="!form.valid">Submit</button>
+  </form>
+</div>

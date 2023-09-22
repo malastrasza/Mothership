@@ -1,0 +1,28 @@
+.container {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+}
+
+.component {
+  padding: 0.5em;
+  margin: 0 auto;
+  display: block;
+  width: 50%;
+}
+
+.outline {
+  border: 1px solid black;
+  display: inline-block;
+  padding: 0.5em;
+  width: 100%;
+}
+
+.button {
+  margin: 0 auto;
+  padding: 15px 35px;
+  width: 300px;
+  background-color: rgb(14, 170, 170);
+}

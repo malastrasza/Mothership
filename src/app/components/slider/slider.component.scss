@@ -1,0 +1,160 @@
+:host {
+  display: block;
+  padding: 0 1em;
+}
+
+$secondaryDarkGrey: #565656;
+$secondaryWhite: #F2F2F2;
+$orange: #FAA305;
+$white: #FFF;
+$secondaryGrey: #A8A8A8;
+$secondaryLightGrey: #CCC;
+
+.slider {
+  &-label {
+    display: inline-block;
+    width: 100%;
+    color: $secondaryDarkGrey;
+    font-weight: 300;
+    padding: 0 0 0.75em;
+    &.padding-bottom {
+      padding-bottom: 1.5em;
+    }
+  }
+
+  &-container {
+    padding: 1em 1.2em 1.25em;
+    cursor: pointer;
+    &.disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &-bar {
+    position: relative;
+    border-radius: 3px;
+    &-class {
+      width: 100%;
+      height: 4px;
+      background: $secondaryWhite;
+    }
+    &.disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &-tooltip {
+    position: absolute;
+    font-size: .875em;
+    font-weight: 300;
+  }
+
+  &-zipper {
+    position: absolute;
+    cursor: pointer;
+    top: -1.1875em;
+    background: $orange;
+    border-radius: 50%;
+    &-container {
+      position: relative;
+      right: 1.25em;
+    }
+    &-min,
+    &-max {
+      z-index: 400;
+    }
+    aui-svg-sprite {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      position: absolute;
+      pointer-events: none;
+      top: .75em;
+    }
+    &-chevron {
+      &-left {
+        left: .25em;
+      }
+      &-right {
+        right: .25em;
+      }
+    }
+    &-class {
+      width: 2.5em;
+      height: 2.5em;
+      background: $orange;
+      color: $white;
+    }
+    &-layered {
+      z-index: 500;
+      box-sizing: border-box;
+      outline: 1px solid $white;
+    }
+    &.transitioned {
+      transition: left .25s ease-in-out;
+    }
+    &.disabled {
+      background-color: $secondaryGrey;
+      cursor: not-allowed;
+      &:before {
+        border-bottom-color: $secondaryGrey;
+      }
+    }
+  }
+
+  &-highlight {
+    position: absolute;
+    z-index: 200;
+    height: inherit;
+    background: $secondaryWhite;
+    &.border-radius {
+      border-radius: 3px 0 0 3px;
+    }
+    &-class {
+      background: $orange;
+    }
+    &.transitioned {
+      transition: width .25s ease-in-out;
+    }
+    &.disabled {
+      background: $secondaryGrey;
+      cursor: not-allowed;
+    }
+  }
+
+  &-limit {
+    position: absolute;
+    z-index: 300;
+    height: inherit;
+    background: $secondaryLightGrey;
+    &:after {
+      content: '';
+      position: absolute;
+      top: -.1875em;
+      width: .1875em;
+      height: .625em;
+      background: $secondaryLightGrey;
+    }
+    &-min {
+      left: 0;
+      border-radius: 3px 0 0 3px;
+      &:after {
+        right: 0;
+      }
+    }
+    &-max {
+      right: 0;
+      border-radius: 0 3px 3px 0;
+      &:after {
+        left: 0;
+      }
+    }
+  }
+
+  &-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.125em;
+      font-weight: 300;
+  }
+}
