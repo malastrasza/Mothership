@@ -1,16 +1,21 @@
 <mat-horizontal-stepper
-    [linear]="false"
-    class="mat-elevation-z5"
-    labelPosition="bottom"
+  [linear]="false"
+  class="mat-elevation-z5"
+  labelPosition="bottom"
 >
-
-<mat-step>
+  <mat-step [stepControl]="step1.form" errorMessage="First step in error">
     <ng-template matStepLabel>First step</ng-template>
-</mat-step>
 
-<mat-step>
+    <app-reactive-form-step-one #step1></app-reactive-form-step-one>
+
+    <button matStepperNext>Next</button>
+  </mat-step>
+
+  <mat-step errorMessage="Second step in error">
     <ng-template matStepLabel>Second step</ng-template>
-</mat-step>
 
+    <app-reactive-form-step-two></app-reactive-form-step-two>
 
+    <button matStepperPrevious>Prev</button>
+  </mat-step>
 </mat-horizontal-stepper>
